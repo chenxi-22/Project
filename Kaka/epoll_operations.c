@@ -75,7 +75,7 @@ int EpollWait(int epfd, struct epoll_event* ev, int max_events, int timeout)
 }
 
 void EventsHandler(int epfd, int events_num, struct epoll_event* event, 
-                   int listen_sock, ThreaddPool* tp, char root[])
+                   int listen_sock, ThreaddPool* tp, char root[], TimerManager* tm, pthread_mutex_t lock)
 {
   if (event == NULL) 
   {
@@ -96,14 +96,20 @@ void EventsHandler(int epfd, int events_num, struct epoll_event* event,
         continue;
       }
 
+      pthread_mutex_lock(&lock);
+      TimerPush(tm->head, event[i].data.fd);
+      pthread_mutex_unlock(&lock);
+
       Arg* arg = (Arg *)malloc(sizeof(Arg));
       arg->epfd = epfd;
       arg->sock = event[i].data.fd;
+      arg->tm = tm;
+      arg->lock = lock;
       strcpy(arg->root, root);
 
       AddWorkQueue(tp, HandlerRequest, (void*)arg);
 
-      DilationThread(tp); 
+      // DilationThread(tp); 
     }
   } // end for(; i < events_num; ++i)
 }

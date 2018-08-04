@@ -8,6 +8,8 @@ void* HandlerRequest(void* arg)
   int epfd = cur->epfd;
   int64_t sock = cur->sock;
   char* root = cur->root;
+  TimerManager* tm = cur->tm;
+  pthread_mutex_t lock = cur->lock;
   free(cur);
 
   char buf[MAX] = {0};
@@ -99,6 +101,10 @@ void* HandlerRequest(void* arg)
 
   // HandlerError(error_code);
   EpollDel(epfd, sock, EPOLLIN | EPOLLONESHOT);
+  pthread_mutex_lock(&lock);
+  Timer* pos = TimerFind(tm->head, sock);
+  TimerDel(tm->head, pos);
+  pthread_mutex_unlock(&lock);
   close(sock);
   return NULL;
 }

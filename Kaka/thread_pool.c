@@ -14,29 +14,34 @@ void* DefaultWork(void* arg) // 默认任务
     
     if (tp->destroy_flag == 1) {
       pthread_mutex_unlock(&(tp->queue_lock));
-      pthread_exit(0);
+      break;
     }
 
-    WorkReadyQueue* tmp = tp->queue_head;
-    tmp->next = NULL;
-    tp->queue_head = tp->queue_head->next;
+    WorkReadyQueue* task = tp->queue_head->next;
+    if (task == NULL) {
+      pthread_mutex_unlock(&(tp->queue_lock));
+      continue;
+    }
+
+    tp->queue_head->next = task->next;
     tp->work_queue_size--;
 
     pthread_mutex_unlock(&(tp->queue_lock));
 
-    pthread_mutex_lock(&(tp->thread_count_lock));
-    tp->thread_work_count++;
-    pthread_mutex_unlock(&(tp->thread_count_lock));
+    // pthread_mutex_lock(&(tp->thread_count_lock));
+    // tp->thread_work_count++;
+    // pthread_mutex_unlock(&(tp->thread_count_lock));
 
-    (*(tmp->WorkFunction))(tmp->arg);
+    (*(task->WorkFunction))(task->arg);
 
-    pthread_mutex_lock(&(tp->thread_count_lock));
-    tp->thread_work_count--;
-    pthread_mutex_unlock(&(tp->thread_count_lock));
+    // pthread_mutex_lock(&(tp->thread_count_lock));
+    // tp->thread_work_count--;
+    // pthread_mutex_unlock(&(tp->thread_count_lock));
 
-    free(tmp);
-    tmp = NULL;
+    free(task);
   }
+  pthread_mutex_unlock(&(tp->queue_lock));
+  pthread_exit(0);
 
   return NULL;
 }
@@ -49,7 +54,10 @@ void ThreadPoolInit(ThreaddPool* tp) // 初始化线程池
 
   tp->thread_work_count = 0;
 
-  tp->queue_head = NULL;
+  tp->queue_head = (WorkReadyQueue*)malloc(sizeof(WorkReadyQueue));
+  tp->queue_head->arg = NULL;
+  tp->queue_head->next = NULL;
+  tp->queue_head->WorkFunction = NULL;
   tp->work_queue_size = 0;
 
   tp->thread_init = THREAD_INIT;
@@ -80,21 +88,14 @@ void AddWorkQueue(ThreaddPool* tp, void* (*WorkFunction)(void* arg), void* arg) 
 
   pthread_mutex_lock(&(tp->queue_lock));
 
-  if (tp->queue_head == NULL) {
-    tp->queue_head = tmp;
-  } else {
-    WorkReadyQueue* cur = tp->queue_head;
-    while (cur != NULL) {
-      cur = cur->next;
-    }
-    cur = tmp;
-  }
+  tmp->next = tp->queue_head->next;
+  tp->queue_head->next = tmp;
   tp->work_queue_size++;
 
-  pthread_mutex_unlock(&(tp->queue_lock));
 
   // 任务添加完毕后，唤醒线程池内一个线程
   pthread_cond_signal(&(tp->queue_ready));
+  pthread_mutex_unlock(&(tp->queue_lock));
 
   return;
 }

@@ -1,4 +1,5 @@
 #include "comm.h"
+#include "timer.h"
 
 #define DEFAULT_CONFIG "default.config"
 #define CONFIG_SIZE 64
@@ -8,6 +9,8 @@
 
 char config_path[] = DEFAULT_CONFIG;
 struct epoll_event* events;
+
+pthread_mutex_t lock;
 
 // main
 int main()
@@ -36,7 +39,7 @@ int main()
   }
 
   // 增加 EPOLLONESHOT 是为了保证每一个就绪的文件描述符有且只有一个线程为其服务
-  int ret = EpollAdd(epfd, listen_sock, EPOLLIN | EPOLLONESHOT); 
+  int ret = EpollAdd(epfd, listen_sock, EPOLLIN);
   if (ret < 0) {
     perror("EpollAdd");
     return 1;
@@ -47,16 +50,22 @@ int main()
   ThreaddPool tp;
   ThreadPoolInit(&tp);
 
+  pthread_mutex_init(&lock, NULL);
+
+  TimerManager* tm = TimerManagerInit();
+  // AddWorkQueue(&tp, TimeOutHandler, (void*)tm);
+
   while (1) {
     int events_num = EpollWait(epfd, events, MAXEVENTS, -1);
     if (events_num < 0) {
       return 1;
     }
 
-    EventsHandler(epfd, events_num, events, listen_sock, &tp, root);
+    EventsHandler(epfd, events_num, events, listen_sock, &tp, root, tm, lock);
   }
 
   close(epfd);
+  TimerManagerDestroy(tm);
   ThreadPoolDestroy(&tp);
 
   return 0;

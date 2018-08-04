@@ -18,11 +18,14 @@
 
 #include "epoll_operations.h"
 #include "echo_error_log.h"
+#include "timer.h"
 
 typedef struct Arg {
   int64_t sock;
   int epfd;
   char root[32];
+  TimerManager* tm;
+  pthread_mutex_t lock;
 } Arg;
 
 int readConfig(char* path, char* buf, char* root, char* port); // 读取默认配置

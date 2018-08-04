@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 #define MAX_THREAD_LIMIT 8 //最大上限
-#define THREAD_INIT 5 // 初始化个数
+#define THREAD_INIT 4 // 初始化个数
 
 typedef struct WorkReadyQueue {
   void* (*WorkFunction)(void* arg); // 函数指针

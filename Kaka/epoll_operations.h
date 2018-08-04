@@ -3,8 +3,10 @@
 #include <sys/epoll.h>
 #include <stdio.h>
 #include <errno.h>
+
 #include "thread_pool.h"
 #include "http_response.h"
+#include "timer.h"
 
 #define MAXEVENTS 1024
 
@@ -19,5 +21,5 @@ int EpollDel(int epfd, int fd, int events);
 int EpollWait(int epfd, struct epoll_event* ev, int max_events, int timeout);
 
 void EventsHandler(int epfd, int events_num, struct epoll_event* event, 
-                   int listen_sock, ThreaddPool* tp, char root[]);
+                   int listen_sock, ThreaddPool* tp, char root[], TimerManager* tm, pthread_mutex_t lock);
 
