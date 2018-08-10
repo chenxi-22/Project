@@ -1,0 +1,85 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AddWorkQueue	thread_pool.c	/^void AddWorkQueue(ThreadPool* tp, void* (*WorkFunction)(void* arg), void* arg) \/\/ 给任务就绪队列添加任务$/;"	f
+BUFF_SIZE	http_operate.h	16;"	d
+CONFIG_PATH	main.c	5;"	d	file:
+CONNECTION_SIZE	http_operate.h	10;"	d
+CONTENT_LENGTH_SIZE	http_operate.h	9;"	d
+COOKIE_SIZE	http_operate.h	15;"	d
+DefaultWork	thread_pool.c	/^void* DefaultWork(void* arg) \/\/ 默认任务$/;"	f
+DilationThread	thread_pool.c	/^void DilationThread(ThreadPool* tp) \/\/ 扩容$/;"	f
+HOST	http_operate.h	18;"	d
+HOST_SIZE	http_operate.h	11;"	d
+MAX_EVENTS_SIZE	epoll_operate.h	16;"	d
+MAX_THREAD_LIMIT	thread_pool.h	5;"	d
+METHOD_SIZE	http_operate.h	8;"	d
+PATH_SIZE	http_operate.h	12;"	d
+QUERY_SIZE	http_operate.h	14;"	d
+ROOT_SIZE	http_operate.h	7;"	d
+THREAD_INIT	thread_pool.h	6;"	d
+ThreadPool	thread_pool.h	/^} ThreadPool; \/\/ 线程池内元素$/;"	t	typeref:struct:ThreaddPool
+ThreadPoolDestroy	thread_pool.c	/^void ThreadPoolDestroy(ThreadPool* tp) \/\/ 销毁线程池$/;"	f
+ThreadPoolInit	thread_pool.c	/^void ThreadPoolInit(ThreadPool* tp) \/\/ 初始化线程池$/;"	f
+ThreaddPool	thread_pool.h	/^typedef struct ThreaddPool {$/;"	s
+URL_SIZE	http_operate.h	13;"	d
+WorkFunction	thread_pool.h	/^  void* (*WorkFunction)(void* arg); \/\/ 函数指针$/;"	m	struct:WorkReadyQueue
+WorkReadyQueue	thread_pool.h	/^typedef struct WorkReadyQueue {$/;"	s
+WorkReadyQueue	thread_pool.h	/^} WorkReadyQueue; \/\/ 任务就绪队列$/;"	t	typeref:struct:WorkReadyQueue
+accepet_handler	comm.c	/^int accepet_handler(int64_t fd)$/;"	f
+arg	thread_pool.h	/^  void* arg; \/\/ 参数$/;"	m	struct:WorkReadyQueue
+arg_set	epoll_operate.h	/^typedef struct arg_set {$/;"	s
+arg_set	epoll_operate.h	/^} arg_set;$/;"	t	typeref:struct:arg_set
+config_path	main.c	/^char config_path[] = CONFIG_PATH;$/;"	v
+connection	http_operate.h	/^  char connection[CONNECTION_SIZE];$/;"	m	struct:http_request
+content_length	http_operate.h	/^  char content_length[CONTENT_LENGTH_SIZE];$/;"	m	struct:http_request
+cookie	http_operate.h	/^  char cookie[COOKIE_SIZE];$/;"	m	struct:http_request
+destroy_flag	thread_pool.h	/^  int destroy_flag; \/\/ 防止重复销毁$/;"	m	struct:ThreaddPool
+epfd	epoll_operate.h	/^  int epfd;$/;"	m	struct:arg_set
+get_connection	http_operate.c	/^void get_connection(http_request* rq, char* buff) $/;"	f
+get_content_length	http_operate.c	/^void get_content_length(http_request* rq, char* buff) $/;"	f
+get_cookie	http_operate.c	/^void get_cookie(http_request* rq, char* buff) $/;"	f
+get_host	http_operate.c	/^void get_host(http_request*rq, char* buff) $/;"	f
+get_line	http_operate.c	/^int get_line(char* buff, int64_t sock) $/;"	f
+get_method	http_operate.c	/^void get_method(http_request* rq, char* buff) $/;"	f
+host	http_operate.h	/^  char host[HOST_SIZE];$/;"	m	struct:http_request
+http_handler	http_request.c	/^void* http_handler(void* cur) {$/;"	f
+http_header_handler	http_operate.c	/^int http_header_handler(http_request* rq) $/;"	f
+http_request	http_operate.h	/^typedef struct http_request { \/\/ HTTP 请求头$/;"	s
+http_request	http_operate.h	/^} http_request;$/;"	t	typeref:struct:http_request
+is_cgi	http_operate.c	/^int is_cgi(http_request* rq, int* cgi)$/;"	f
+is_keep_alive	http_operate.c	/^int is_keep_alive(http_request* rq)$/;"	f
+kk_epoll_add	epoll_operate.c	/^int kk_epoll_add(int epfd, int64_t fd, int events) {$/;"	f
+kk_epoll_del	epoll_operate.c	/^int kk_epoll_del(int epfd, int64_t fd, int events) {$/;"	f
+kk_epoll_init	epoll_operate.c	/^int kk_epoll_init(int flag) {$/;"	f
+kk_epoll_mod	epoll_operate.c	/^int kk_epoll_mod(int epfd, int64_t fd, int events) {$/;"	f
+kk_epoll_wait	epoll_operate.c	/^int kk_epoll_wait(int epfd, struct epoll_event* events, int max_events, int timeout) {$/;"	f
+kk_read_config	comm.c	/^int kk_read_config(char* config_path, char* port, char* root) {$/;"	f
+kk_start_up	comm.c	/^int64_t kk_start_up(int port) {$/;"	f
+main	main.c	/^int main() {$/;"	f
+main	test/test.cpp	/^int main()$/;"	f
+max_thread_limit	thread_pool.h	/^  int max_thread_limit; \/\/ 线程池最大上限$/;"	m	struct:ThreaddPool
+method	http_operate.h	/^  char method[METHOD_SIZE];$/;"	m	struct:http_request
+next	thread_pool.h	/^  struct WorkReadyQueue* next;$/;"	m	struct:WorkReadyQueue	typeref:struct:WorkReadyQueue::WorkReadyQueue
+path	http_operate.h	/^  char path[PATH_SIZE];$/;"	m	struct:http_request
+query	http_operate.h	/^  char query[QUERY_SIZE];$/;"	m	struct:http_request
+queue_head	thread_pool.h	/^  WorkReadyQueue* queue_head; \/\/ 任务队列头指针$/;"	m	struct:ThreaddPool
+queue_lock	thread_pool.h	/^  pthread_mutex_t queue_lock; $/;"	m	struct:ThreaddPool
+queue_ready	thread_pool.h	/^  pthread_cond_t queue_ready; $/;"	m	struct:ThreaddPool
+ready_events_handler	epoll_operate.c	/^void ready_events_handler(int epfd, struct epoll_event* events, $/;"	f
+root	epoll_operate.h	/^  char root[ROOT_SIZE];$/;"	m	struct:arg_set
+root	http_operate.h	/^  char root[ROOT_SIZE];$/;"	m	struct:http_request
+set_no_block	comm.c	/^int set_no_block(int fd)$/;"	f
+sigpipe_handler	comm.c	/^int sigpipe_handler()$/;"	f
+sock	epoll_operate.h	/^  int64_t sock;$/;"	m	struct:arg_set
+sock	http_operate.h	/^  int64_t sock;$/;"	m	struct:http_request
+thread_count_lock	thread_pool.h	/^  pthread_mutex_t thread_count_lock;$/;"	m	struct:ThreaddPool
+thread_id	thread_pool.h	/^  pthread_t* thread_id; \/\/ 线程 id 数组$/;"	m	struct:ThreaddPool
+thread_init	thread_pool.h	/^  int thread_init; \/\/ 初始化线程数$/;"	m	struct:ThreaddPool
+thread_num	thread_pool.h	/^  int thread_num; \/\/ 线程池内实际线程数$/;"	m	struct:ThreaddPool
+thread_work_count	thread_pool.h	/^  int thread_work_count;$/;"	m	struct:ThreaddPool
+url	http_operate.h	/^  char url[URL_SIZE];$/;"	m	struct:http_request
+work_queue_size	thread_pool.h	/^  int work_queue_size; \/\/ 任务个数$/;"	m	struct:ThreaddPool
