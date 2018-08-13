@@ -1,0 +1,95 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+AcceptHandler	comm.c	/^void AcceptHandler(int listen_sock, int epfd)$/;"	f
+AddWorkQueue	thread_pool.c	/^void AddWorkQueue(ThreaddPool* tp, void* (*WorkFunction)(void* arg), void* arg) \/\/ 给任务就绪队列添加任务$/;"	f
+AdjustDown	priority_queue.c	/^void AdjustDown(TimerNode* tm[], int parent, int size) \/\/ 下沉$/;"	f
+Arg	comm.h	/^typedef struct Arg {$/;"	s
+Arg	comm.h	/^} Arg;$/;"	t	typeref:struct:Arg
+CC	Makefile	/^CC = gcc$/;"	m
+CONFIG_SIZE	main.c	5;"	d	file:
+CgiResponse	cgi_response.c	/^void CgiResponse(int sock, char* method, char* query, char* path)$/;"	f
+ClearHead	util.c	/^void ClearHead(int sock)$/;"	f
+DEFAULT_CONFIG	main.c	4;"	d	file:
+DefaultWork	thread_pool.c	/^void* DefaultWork(void* arg) \/\/ 默认任务$/;"	f
+DilationThread	thread_pool.c	/^void DilationThread(ThreaddPool* tp) \/\/ 扩容$/;"	f
+DupErrorDesr	echo_error_log.c	/^int DupErrorDesr()$/;"	f
+ERRORLOGPATH	echo_error_log.h	12;"	d
+EchoErrorLog	echo_error_log.c	/^void EchoErrorLog()$/;"	f
+EpollAdd	epoll_operations.c	/^int EpollAdd(int epfd, int fd, int events)$/;"	f
+EpollCreate	epoll_operations.c	/^int EpollCreate(int flag)$/;"	f
+EpollDel	epoll_operations.c	/^int EpollDel(int epfd, int fd, int events)$/;"	f
+EpollMod	epoll_operations.c	/^int EpollMod(int epfd, int fd, int events)$/;"	f
+EpollWait	epoll_operations.c	/^int EpollWait(int epfd, struct epoll_event* ev, int max_events, int timeout)$/;"	f
+EraseTimerNode	priority_queue.c	/^void EraseTimerNode(Priq* pq)$/;"	f
+EventsHandler	epoll_operations.c	/^void EventsHandler(int epfd, int events_num, struct epoll_event* event, $/;"	f
+GetLength	util.c	/^char* GetLength(int sock)$/;"	f
+GetLine	util.c	/^int GetLine(int sock, char line[], int size) \/\/ 按行读取$/;"	f
+GetMinTimerNode	priority_queue.c	/^TimerNode* GetMinTimerNode(Priq* pq)$/;"	f
+HOST	http_response.h	10;"	d
+Handler	timer.c	/^void Handler(TimerNode* min)$/;"	f
+HandlerRequest	http_response.c	/^void* HandlerRequest(void* arg)$/;"	f
+IsEmpty	priority_queue.c	/^int IsEmpty(Priq* pq) $/;"	f
+MAX	http_response.h	9;"	d
+MAXEVENTS	epoll_operations.h	11;"	d
+MAX_THREAD_LIMIT	thread_pool.h	5;"	d
+NormalResponse	normal_response.c	/^void NormalResponse(int sock, char* path, int size)$/;"	f
+PORT	main.c	7;"	d	file:
+PRIORITY_QUEUE	priority_queue.h	5;"	d
+PriorityQueue	priority_queue.h	/^typedef struct PriorityQueue {$/;"	s
+PriorityQueueInit	priority_queue.c	/^Priq* PriorityQueueInit() \/\/ 初始化$/;"	f
+Priq	priority_queue.h	/^} Priq;$/;"	t	typeref:struct:PriorityQueue
+ROOT	main.c	8;"	d	file:
+StartUp	comm.c	/^int StartUp(int port) \/\/ 创建套接字$/;"	f
+THREAD_INIT	thread_pool.h	6;"	d
+TIMEOUT	timer.h	10;"	d
+ThreadPoolDestroy	thread_pool.c	/^void ThreadPoolDestroy(ThreaddPool* tp) \/\/ 销毁线程池$/;"	f
+ThreadPoolInit	thread_pool.c	/^void ThreadPoolInit(ThreaddPool* tp) \/\/ 初始化线程池$/;"	f
+ThreaddPool	thread_pool.h	/^typedef struct ThreaddPool {$/;"	s
+ThreaddPool	thread_pool.h	/^} ThreaddPool; \/\/ 线程池内元素$/;"	t	typeref:struct:ThreaddPool
+TimerAdd	timer.c	/^void TimerAdd(Priq* pq, int64_t sock) \/\/ 添加定时器$/;"	f
+TimerDel	timer.c	/^void TimerDel(TimerNode* pos) \/\/ 删除定时器$/;"	f
+TimerNode	timer.h	/^typedef struct TimerNode {$/;"	s
+TimerNode	timer.h	/^} TimerNode;$/;"	t	typeref:struct:TimerNode
+TimerNodeHeapCreate	priority_queue.c	/^void TimerNodeHeapCreate(Priq* pq)$/;"	f
+TimerOutHandler	timer.c	/^void TimerOutHandler(Priq* pq)$/;"	f
+TimerResize	timer.c	/^void TimerResize(Priq* pq) \/\/ 扩容$/;"	f
+Usage	comm.c	/^int Usage(int argc, char* argv[]) \/\/ 用法$/;"	f
+WorkFunction	thread_pool.h	/^  void* (*WorkFunction)(void* arg); \/\/ 函数指针$/;"	m	struct:WorkReadyQueue
+WorkReadyQueue	thread_pool.h	/^typedef struct WorkReadyQueue {$/;"	s
+WorkReadyQueue	thread_pool.h	/^} WorkReadyQueue; \/\/ 任务就绪队列$/;"	t	typeref:struct:WorkReadyQueue
+arg	thread_pool.h	/^  void* arg; \/\/ 参数$/;"	m	struct:WorkReadyQueue
+capacity	priority_queue.h	/^  int capacity;  \/\/ 总共的大小$/;"	m	struct:PriorityQueue
+config_path	main.c	/^char config_path[] = DEFAULT_CONFIG;$/;"	v
+destroy_flag	thread_pool.h	/^  int destroy_flag; \/\/ 防止重复销毁$/;"	m	struct:ThreaddPool
+epfd	comm.h	/^  int epfd;$/;"	m	struct:Arg
+events	main.c	/^struct epoll_event* events;$/;"	v	typeref:struct:epoll_event
+handler_for_sigpipe	comm.c	/^int handler_for_sigpipe() $/;"	f
+is_delete	timer.h	/^  int is_delete;$/;"	m	struct:TimerNode
+key_msec	timer.h	/^  time_t key_msec; \/\/ 超时具体时间$/;"	m	struct:TimerNode
+lock	comm.h	/^  pthread_mutex_t lock;$/;"	m	struct:Arg
+lock	main.c	/^pthread_mutex_t lock;$/;"	v
+main	main.c	/^int main()$/;"	f
+max_thread_limit	thread_pool.h	/^  int max_thread_limit; \/\/ 线程池最大上限$/;"	m	struct:ThreaddPool
+next	thread_pool.h	/^  struct WorkReadyQueue* next;$/;"	m	struct:WorkReadyQueue	typeref:struct:WorkReadyQueue::WorkReadyQueue
+queue_head	thread_pool.h	/^  WorkReadyQueue* queue_head; \/\/ 任务队列头指针$/;"	m	struct:ThreaddPool
+queue_lock	thread_pool.h	/^  pthread_mutex_t queue_lock; $/;"	m	struct:ThreaddPool
+queue_ready	thread_pool.h	/^  pthread_cond_t queue_ready; $/;"	m	struct:ThreaddPool
+readConfig	comm.c	/^int readConfig(char* path, char buf[], char root[], char port[])$/;"	f
+root	comm.h	/^  char root[32];$/;"	m	struct:Arg
+setNoBlock	comm.c	/^int setNoBlock(int fd) \/\/ 设置为非阻塞$/;"	f
+size	priority_queue.h	/^  int size; \/\/ 现在队列内的节点个数$/;"	m	struct:PriorityQueue
+sock	comm.h	/^  int64_t sock;$/;"	m	struct:Arg
+sock	timer.h	/^  int64_t sock; \/\/ sock$/;"	m	struct:TimerNode
+swap	priority_queue.c	/^void swap(TimerNode** a, TimerNode** b)$/;"	f
+thread_count_lock	thread_pool.h	/^  pthread_mutex_t thread_count_lock;$/;"	m	struct:ThreaddPool
+thread_id	thread_pool.h	/^  pthread_t* thread_id; \/\/ 线程 id 数组$/;"	m	struct:ThreaddPool
+thread_init	thread_pool.h	/^  int thread_init; \/\/ 初始化线程数$/;"	m	struct:ThreaddPool
+thread_num	thread_pool.h	/^  int thread_num; \/\/ 线程池内实际线程数$/;"	m	struct:ThreaddPool
+thread_work_count	thread_pool.h	/^  int thread_work_count;$/;"	m	struct:ThreaddPool
+tm	priority_queue.h	/^  struct TimerNode** tm; \/\/ Timer 数组$/;"	m	struct:PriorityQueue	typeref:struct:PriorityQueue::TimerNode
+updateTime	timer.c	/^time_t updateTime()$/;"	f
+work_queue_size	thread_pool.h	/^  int work_queue_size; \/\/ 任务个数$/;"	m	struct:ThreaddPool

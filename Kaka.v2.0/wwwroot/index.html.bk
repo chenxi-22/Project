@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<form action="cgi/download" method="GET">
+<input type="radio" name="file" value="高质量C++编程.pdf">高质量C++编程
+<br>
+<input type="radio" name="file" value="Linux.md">Linux
+<br>
+<input type="radio" name="file" value="Unix环境高级编程.pdf">Unix高级环境编程
+<br><br>
+<input type="submit">
+<form> 
+</body>
+</html>
+
