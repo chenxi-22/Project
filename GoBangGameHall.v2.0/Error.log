@@ -1,0 +1,24 @@
+2018-07-20  16:56:05: read: Success
+2018-07-20  16:56:14: read: Success
+2018-07-20  16:56:22: read: Success
+2018-07-20  16:56:28: read: Success
+2018-07-20  16:57:28: read: Success
+2018-07-20  16:57:30: read: Success
+2018-07-20  16:58:06: read: Success
+2018-07-20  16:59:15: read: Success
+2018-07-20  16:59:16: read: Success
+2018-07-20  17:00:30: read: Success
+2018-07-20  17:04:44: read: Success
+2018-07-20  17:04:51: read: Success
+2018-07-20  17:17:31: read: Success
+2018-07-20  17:18:03: read: Success
+2018-07-20  17:18:48: read: Success
+2018-07-20  17:22:35: read: Success
+2018-07-20  17:54:23: read: Bad file descriptor
+2018-07-20  18:02:23: read: Bad file descriptor
+2018-07-20  18:04:09: read: Bad file descriptor
+2018-07-20  18:10:36: read: Bad file descriptor
+2018-07-20  18:11:08: read: Bad file descriptor
+2018-07-20  18:18:39: read: Connection reset by peer
+2018-07-20  18:20:06: read: Bad file descriptor
+2018-07-23  16:27:41: read: Connection reset by peer
